@@ -7,99 +7,43 @@
   <title>Document</title>
 </head>
 <body>
+  
+
   <div class="calc" id="app">
-    <div class="result_lbl">{{lbl_val || "0"}}</div>
+    <div class="result_lbl">{{current || "0"}}</div>
     
     <div class="btn_groub grid_sys">
 
-      <li class="clear" @click="clear">C</li>
-      <li class="del" @click="del">&#8592;</li>
-      <li class="sqroot" @click="sqroot('')">&#8730;</li>
-      <li class="sub" @click="sub('-')">&#8722;</li>
+      <li class="btn" @click="press">C</li>
+      <li class="btn" @click="press">←</li>
+      <li class="btn" @click="press">√</li>
+      <li class="btn" @click="press">-</li>
       
-      <li class="number" @click="append('1')">1</li>
-      <li class="number" @click="append('2')">2</li>
-      <li class="number" @click="append('3')">3</li>
-      <li class="plus" @click="plus('+')">&#43;</li>
+      <li class="btn" @click="press">1</li>
+      <li class="btn" @click="press">2</li>
+      <li class="btn" @click="press">3</li>
+      <li class="btn" @click="press">+</li>
 
-      <li class="number" @click="append('4')">4</li>
-      <li class="number" @click="append('5')">5</li>
-      <li class="number" @click="append('6')">6</li>
-      <li class="multi" @click="multi('*')">&#215;</li>
+      <li class="btn" @click="press">4</li>
+      <li class="btn" @click="press">5</li>
+      <li class="btn" @click="press">6</li>
+      <li class="btn" @click="press">×</li>
 
-      <li class="number" @click="append('7')">7</li>
-      <li class="number" @click="append('8')">8</li>
-      <li class="number" @click="append('9')">9</li>
-      <li class="div" @click="divid('/')">&#247;</li>
+      <li class="btn" @click="press">7</li>
+      <li class="btn" @click="press">8</li>
+      <li class="btn" @click="press">9</li>
+      <li class="btn" @click="press">÷</li>
 
-      <li class="number" @click="append('0')">0</li>
-      <li class="number" @click="append('00')">00</li>
-      <li class="number" @click="dot">.</li>
-      <li class="equal" @click="equal">&#61;</li>
+      <li class="btn" @click="press">0</li>
+      <li class="btn" @click="press">00</li>
+      <li class="btn" @click="press">.</li>
+      <li class="btn equals" @click="press">=</li>
       
     </div>
   </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-
-    var app = new Vue({
-    el: "#app",
-    data() {
-      return {
-        lbl_val : "",
-        operator: null,
-        
-      }
-    },
-    methods: {
-      clear() {
-        this.lbl_val= ""
-      },
-      append(number){
-        this.lbl_val = `${this.lbl_val}${number}`;
-        console.log(number);
-      },
-      dot(){
-        if(this.lbl_val.indexOf('.') === -1) {
-          this.append('.');
-        }
-      },
-      del() {
-        if(this.lbl_val.length !== 0) {
-          this.lbl_val.removeChild;
-        }
-      },
-      sqroot(root) {
-        
-      },
-      sub(operator) {
-        this.operator = (a, b) => a - b;
-        console.log(operator);
-        this.append(operator);
-      },
-      plus(operator) {
-        this.operator = (a, b) => a + b;
-        console.log(operator);
-        this.append(operator);
-      },
-      multi(operator) {
-        this.operator = (a, b) => a * b;
-        console.log(operator);
-        this.append(operator);
-      },
-      divid(operator) {
-        this.operator = (a, b) => a / b;
-        console.log(operator);
-        this.append(operator);
-      },
-      equal() {
-        
-      },
-    }
-  })
-
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>

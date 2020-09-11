@@ -54,9 +54,9 @@ body{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.equal{
+.equals{
   background: #6495ed;
 }
-.equal:hover{
+.equals:hover{
   background: #2d6ee4;
 }
