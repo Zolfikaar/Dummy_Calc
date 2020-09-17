@@ -1,83 +1,49 @@
 var app = new Vue({
   el: "#app",
-  data: {
+  data:{
+    previouse: "",
     current: "",
-    x: "",
-    y: "",
     operator: null,
-    changeMode: true
   },
   methods: {
-    setNumber(digit){
-      if(this.operator === null){
-        this.x += digit;
-        this.display = this.x;
-      }
-      else {
-        this.y += digit;
-        this.display = this.y;
-      }
+    press(number) {
+      this.current = `${this.current}${number}`;
     },
-    press(event) {
-      let key = event.target.innerText;
-      if(
-        key != '=' &&
-        key != 'C' &&
-        key != '×' &&
-        key != '÷' &&
-        key != '√' &&
-        key != '←'
-      ) {
-        app.current += key;
-      } else if (key === "=") {
-        equals();
-      } else if (key === "C") {
-        clear();
-      } else if (key === "×") {
-        multiply();
-      } else if (key === "÷") {
-        divide();
-      } else if (key === "√") {
-        squareRoot();
-      } else if (key === "←") {
-        backspace();
-      } 
+    subtraction(){
+      this.current += "-"
+      this.operator = (a, b) => a - b;
+    },
+    sumation(){
+      this.current += "+"
+      this.operator = (a, b) => a + b;
+    },
+    multiplay(){
+      this.current += "*"
+      this.operator = (a, b) => a * b;
+    },
+    divide(){
+      this.current += "/"
+      this.operator = (a, b) => a / b;
+    },
+
+    clear(){
+      this.previouse ="";
+      this.current = "";
+    },
+    del(){
+      this.current = this.current.substring(0, this.current.length -1);
+    },
+    sqroot(){
+      this.current = Math.sqrt(this.current)
     },
     dot(){
-      if(app.current.indexOf('.') === -1) {
-        app.current = `${app.current}${'.'}`;
-      }
+      if(this.current.indexOf('.') === -1) {
+        this.press('.');
+      } 
+    },
+    equals(){
+      this.previouse = this.current
+      this.current = eval(this.current)
     }
   }
-});
-
-function equals() {
-  if ((app.current).indexOf("^") > -1) {
-    var base = (app.current).slice(0, (app.current).indexOf("^"));
-    var exponent = (app.current).slice((app.current).indexOf("^") + 1);
-    app.current = eval("Math.pow(" + base + "," + exponent + ")");
-  } else {
-    app.current = eval(app.current)
-  }
-}
-function clear() {
-  app.current = ""
-}
-function multiply() {
-  app.current += "×"
-}
-function divide() {
-  app.current += "÷"
-}
-function sub() {
-  app.current += "-"
-}
-function plus() {
-  app.current += "+"
-}
-function squareRoot() {
-  app.current = Math.sqrt(app.current)
-}
-function backspace() {
-  app.current = app.current.substring(0, app.current.length -1);
-}
+})

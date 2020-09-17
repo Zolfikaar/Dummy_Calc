@@ -7,37 +7,38 @@
   <title>Document</title>
 </head>
 <body>
-  
-
   <div class="calc" id="app">
-    <div class="result_lbl">{{current || "0"}}</div>
+    <div class="result_lbl">
+      <div class="previouse_val"> {{ previouse || 0}} </div>
+      <div class="current_val"> {{ current || 0}} </div>
+    </div>
     
     <div class="btn_groub grid_sys">
-
-      <li class="btn" @click="press">C</li>
-      <li class="btn" @click="press">←</li>
-      <li class="btn" @click="press">√</li>
-      <li class="btn" @click="press">-</li>
+  
+      <button @click="clear()">C</button>
+      <button @click="del()">←</button>
+      <button @click="sqroot">√</button>
+      <button @click="subtraction">-</button>
       
-      <li class="btn" @click="press">1</li>
-      <li class="btn" @click="press">2</li>
-      <li class="btn" @click="press">3</li>
-      <li class="btn" @click="press">+</li>
-
-      <li class="btn" @click="press">4</li>
-      <li class="btn" @click="press">5</li>
-      <li class="btn" @click="press">6</li>
-      <li class="btn" @click="press">×</li>
-
-      <li class="btn" @click="press">7</li>
-      <li class="btn" @click="press">8</li>
-      <li class="btn" @click="press">9</li>
-      <li class="btn" @click="press">÷</li>
-
-      <li class="btn" @click="press">0</li>
-      <li class="btn" @click="press">00</li>
-      <li class="btn" @click="press">.</li>
-      <li class="btn equals" @click="press">=</li>
+      <button @click="press('1')">1</button>
+      <button @click="press('2')">2</button>
+      <button @click="press('3')">3</button>
+      <button @click="sumation">+</button>
+  
+      <button @click="press('4')">4</button>
+      <button @click="press('5')">5</button>
+      <button @click="press('6')">6</button>
+      <button @click="multiplay">×</button>
+  
+      <button @click="press('7')">7</button>
+      <button @click="press('8')">8</button>
+      <button @click="press('9')">9</button>
+      <button @click="divide">÷</button>
+  
+      <button @click="press('0')">0</button>
+      <button @click="press('00')">00</button>
+      <button @click="dot">.</button>
+      <button @click="equals">=</button>
       
     </div>
   </div>
